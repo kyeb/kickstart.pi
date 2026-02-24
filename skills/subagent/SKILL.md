@@ -32,8 +32,8 @@ Use a smaller, faster model for sub-agents — they're significantly cheaper and
 
 | Task complexity | Anthropic | OpenAI |
 |----------------|-----------|--------|
-| Grunt work (search, formatting, simple rewrites) | `--model haiku` | `--model gpt-4o-mini` |
-| Most coding, summarization, exploration | `--model sonnet` | `--model gpt-4o` |
+| Grunt work (search, formatting, simple rewrites) | `--model haiku` | `--model gpt-4.1-nano` |
+| Most coding, summarization, exploration | `--model sonnet` | `--model gpt-4.1-mini` |
 | Deep reasoning (only when needed) | your current model | your current model |
 
 List available models with `pi --list-models`.
