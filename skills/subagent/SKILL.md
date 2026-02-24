@@ -19,7 +19,11 @@ You can spawn yourself as a sub-agent with `pi -p "task"`.
 pi -p "summarize src/utils.ts"
 ```
 
-For longer tasks, use the background skill to avoid timeouts.
+For longer tasks, use `/skill:background` to avoid timeouts.
+
+## Context
+
+Each sub-agent starts with a new, empty context. Give it all the information it needs to complete the task — file paths, specific instructions, expected output format — but don't over-explain things the model already knows.
 
 ## Model selection
 
@@ -31,9 +35,3 @@ pi -p "read all files in src/ and list every export" --model codex-mini   # open
 ```
 
 List available models with `pi --list-models`.
-
-## Notes
-
-- Sub-agents inherit your API key from the shell environment. Make sure your key is configured via `pi /login` or set in your shell profile.
-- Each sub-agent gets its own context — it won't see your conversation history.
-- Use `tmux capture-pane -t <session> -p -S -` to capture the full scrollback, not just the visible pane.
