@@ -1,5 +1,14 @@
-# pi-agent
+# kickstart.pi
 
-Opinionated coding agent CLI setup for Raspberry Pi.
+An opinionated [pi](https://pi.dev) setup that gets you up and running fast.
 
-> WIP — details coming soon.
+## What's included
+
+- **claude-md-loader** — loads [CLAUDE.md files](https://docs.anthropic.com/en/docs/claude-code/memory) the same way Claude Code does: user-level, parent directory traversal, `.claude/rules/`, `@path` imports, and subdirectory lazy-loading
+
+## Install
+
+```bash
+npm install -g @mariozechner/pi-coding-agent
+pi install git:github.com/kyeb/kickstart.pi
+```

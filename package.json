@@ -1,0 +1,16 @@
+{
+  "name": "kickstart.pi",
+  "version": "0.1.0",
+  "description": "An opinionated pi setup that gets you up and running fast.",
+  "keywords": ["pi-package"],
+  "pi": {
+    "extensions": ["./extensions"]
+  },
+  "scripts": {
+    "test": "tsx --test test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.7.1"
+  }
+}
