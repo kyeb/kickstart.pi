@@ -3,8 +3,6 @@ name: background
 description: Use when running long-running commands, background processes, or parallel tasks. Use when any command might time out — builds, test suites, servers, linters, watchers. Also use when you need to run something while continuing other work.
 ---
 
-# Background processes
-
 **Always use tmux.** Do not use `&` or `nohup`; they won't persist across tool calls.
 
 Start: `tmux new-session -d -s mybuild 'npm test; tmux wait-for -S mybuild-done'`

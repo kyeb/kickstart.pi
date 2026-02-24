@@ -3,8 +3,6 @@ name: subagent
 description: Use when a task is parallelizable, would consume many tokens (large file reads, codebase exploration, summarization), or involves grunt work that doesn't need your full reasoning ability. Spawn a sub-agent instead of doing it yourself.
 ---
 
-# Sub-agents
-
 You can spawn yourself as a sub-agent with `pi -p "task"`.
 
 ## When to spawn
