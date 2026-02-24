@@ -2,9 +2,8 @@
 
 An opinionated [pi](https://pi.dev) setup that gets you up and running fast.
 
-## What's included
-
 - **claude-md-loader** — loads [CLAUDE.md files](https://docs.anthropic.com/en/docs/claude-code/memory) the same way Claude Code does: user-level, parent directory traversal, `.claude/rules/`, `@path` imports, and subdirectory lazy-loading
+- **background** — teaches pi to use tmux for long-running commands, servers, and parallel tasks instead of timing out
 
 ## Install
 
