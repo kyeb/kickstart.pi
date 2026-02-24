@@ -33,3 +33,9 @@ sleep 30 && tmux capture-pane -t task1 -p
 - **Your current model** — only when the subtask needs deep reasoning.
 
 List available models with `pi --list-models`.
+
+## Notes
+
+- Sub-agents inherit your API key from the shell environment. Make sure your key is configured via `pi /login` or set in your shell profile.
+- Each sub-agent gets its own context — it won't see your conversation history.
+- Use `tmux capture-pane -t <session> -p -S -` to capture the full scrollback, not just the visible pane.
