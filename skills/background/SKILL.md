@@ -1,6 +1,6 @@
 ---
 name: background
-description: Use when running long-running commands, background processes, or parallel tasks. Use when any command might time out — builds, test suites, servers, linters, watchers. Also use when you need to run something while continuing other work.
+description: Use when a command takes more than ~1 minute, needs to persist (servers, watchers), or when running it in the background lets you continue making progress on other work in parallel. Examples: dev servers, long builds, background subagents. Do not use for short one-shot commands (typecheck, lint, quick tests) — just run those directly.
 ---
 
 **Always use tmux.** Do not use `&` or `nohup`; they won't persist across tool calls.
