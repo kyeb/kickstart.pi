@@ -5,3 +5,6 @@ For anything you're worried about timing out, or that needs to run in the backgr
 1. Start: `tmux new-session -d -s mybuild 'npm run build'`
 2. Check: `sleep 10 && tmux capture-pane -t mybuild -p`
 3. Kill: `tmux kill-session -t mybuild`
+
+Set `remain-on-exit on` if you need to capture output after the command finishes:
+`tmux set-option -t mybuild remain-on-exit on`
