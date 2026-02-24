@@ -4,7 +4,8 @@
   "description": "An opinionated pi setup that gets you up and running fast.",
   "keywords": ["pi-package"],
   "pi": {
-    "extensions": ["./extensions"]
+    "extensions": ["./extensions"],
+    "skills": ["./skills"]
   },
   "scripts": {
     "test": "tsx --test test.ts"
