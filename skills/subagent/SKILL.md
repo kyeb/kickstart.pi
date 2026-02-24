@@ -15,16 +15,11 @@ You can spawn yourself as a sub-agent with `pi -p "task"`.
 
 ## How
 
-For quick tasks:
 ```bash
 pi -p "summarize src/utils.ts"
 ```
 
-For longer tasks, use the background skill:
-```bash
-tmux new-session -d -s task1 'pi -p "refactor the auth module"'
-sleep 30 && tmux capture-pane -t task1 -p
-```
+For longer tasks, use the background skill to avoid timeouts.
 
 ## Model selection
 
