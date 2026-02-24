@@ -1,6 +1,6 @@
 ---
 name: background
-description: Use when a command takes more than ~1 minute, needs to persist (servers, watchers), or when running it in the background lets you continue making progress on other work in parallel. Examples: dev servers, long builds, background subagents. Do not use for short one-shot commands (typecheck, lint, quick tests) — just run those directly.
+description: "Use when a command takes more than ~1 minute, needs to persist (servers, watchers), or when running it in the background lets you continue making progress on other work in parallel. Examples: dev servers, long builds, background subagents. Do not use for short one-shot commands (typecheck, lint, quick tests) — just run those directly."
 ---
 
 **Always use tmux.** Do not use `&` or `nohup`; they won't persist across tool calls.
