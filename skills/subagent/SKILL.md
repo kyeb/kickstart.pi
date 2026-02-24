@@ -11,30 +11,29 @@ You can spawn yourself as a sub-agent with `pi -p "task"`.
 
 - **Parallel work** — multiple independent tasks (e.g. fix 3 bugs at once)
 - **Token-heavy tasks** — exploring a codebase, reading large files, summarizing long output
-- **Grunt work** — search-and-replace, formatting, boilerplate generation
+- **Large content** — grepping through logs or files that would get cut off by context size limits
 
 ## How
 
 For quick tasks:
 ```bash
-pi -p "summarize src/utils.ts" --model sonnet
+pi -p "summarize src/utils.ts"
 ```
 
 For longer tasks, use the background skill:
 ```bash
-tmux new-session -d -s task1 'pi -p "refactor the auth module" --model sonnet'
+tmux new-session -d -s task1 'pi -p "refactor the auth module"'
 sleep 30 && tmux capture-pane -t task1 -p
 ```
 
 ## Model selection
 
-Use a smaller, faster model for sub-agents — they're significantly cheaper and often finish before your main loop continues.
+Default to your current model. Consider a smaller model when the task is purely token-heavy with low reasoning needs — reading many files, searching, counting, grepping logs.
 
-| Task complexity | Anthropic | OpenAI |
-|----------------|-----------|--------|
-| Grunt work (search, formatting, simple rewrites) | `--model haiku` | `--model gpt-4.1-nano` |
-| Most coding, summarization, exploration | `--model sonnet` | `--model gpt-4.1-mini` |
-| Deep reasoning (only when needed) | your current model | your current model |
+```bash
+pi -p "read all files in src/ and list every export" --model haiku        # anthropic
+pi -p "read all files in src/ and list every export" --model codex-mini   # openai
+```
 
 List available models with `pi --list-models`.
 
