@@ -29,8 +29,10 @@ sleep 30 && tmux capture-pane -t task1 -p
 ## Model selection
 
 - **Sonnet** — default for sub-agents. Handles most coding, summarization, and exploration.
-- **Haiku** — even cheaper. Good for pure grunt work: search, formatting, simple rewrites.
+- **Haiku** — even cheaper and much faster. Good for exploration, search, formatting, simple rewrites.
 - **Your current model** — only when the subtask needs deep reasoning.
+
+Smaller models are significantly faster than your main model — a haiku sub-agent can explore a codebase and report back while you continue working.
 
 List available models with `pi --list-models`.
 
