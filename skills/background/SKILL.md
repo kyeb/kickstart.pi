@@ -7,9 +7,12 @@ description: Use when running long-running commands, background processes, or pa
 
 **Always use tmux.** Do not use `&` or `nohup`; they won't persist across tool calls.
 
-1. Start: `tmux new-session -d -s mybuild 'npm run build'`
-2. Check: `sleep 10 && tmux capture-pane -t mybuild -p`
-3. Kill: `tmux kill-session -t mybuild`
+Start: `tmux new-session -d -s mybuild 'npm test; tmux wait-for -S mybuild-done'`
+Wait: `tmux wait-for mybuild-done`
+Capture: `tmux capture-pane -t mybuild -p -S -`
+Kill: `tmux kill-session -t mybuild`
 
-Set `remain-on-exit on` if you need to capture output after the command finishes:
-`tmux set-option -t mybuild remain-on-exit on`
+Tips:
+- `tmux wait-for -S` signals, `tmux wait-for` (no flag) blocks — use them as a pair
+- Set `remain-on-exit on` if you need to capture output after the command exits
+- `-S -` on `capture-pane` gets full scrollback, not just the visible pane
