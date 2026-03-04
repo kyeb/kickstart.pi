@@ -13,5 +13,9 @@
   "devDependencies": {
     "@types/node": "^22.0.0",
     "tsx": "^4.7.1"
+  },
+  "dependencies": {
+    "defuddle": "^0.8.0",
+    "jsdom": "25.0.1"
   }
 }

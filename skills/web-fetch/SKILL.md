@@ -1,44 +1,22 @@
-# Web Fetch Skill
+---
+name: web-fetch
+description: "Fetch a web page and return its content as clean markdown. Use when you need to read documentation, articles, or any web content. Supports site discovery via --discover."
+---
 
-This skill provides a tool for fetching web pages and converting them to clean markdown. It can also be used for site discovery.
+Fetch a URL and get markdown back:
 
-## Usage
-
-The primary tool is `fetch.ts`, a Bun script that takes a URL and outputs markdown.
-
-### Fetching a page as markdown
-
-```bash
-bun run skills/web-fetch/fetch.ts <url>
-```
-
-Example:
 ```bash
 bun run skills/web-fetch/fetch.ts https://docs.example.com/api
 ```
 
-### Fetching raw HTML
+Get raw HTML instead (truncated to 10k chars):
 
-To get the raw, unprocessed HTML of a page (truncated to 10000 characters), use the `--raw` flag.
-
-```bash
-bun run skills/web-fetch/fetch.ts --raw <url>
-```
-
-Example:
 ```bash
 bun run skills/web-fetch/fetch.ts --raw https://example.com
 ```
 
-### Discovering site info
+Discover a site's structure (tries /llms.txt, falls back to /sitemap.xml):
 
-To find a site's `llms.txt` or `sitemap.xml`, use the `--discover` flag with a domain.
-
-```bash
-bun run skills/web-fetch/fetch.ts --discover <domain>
-```
-
-Example:
 ```bash
 bun run skills/web-fetch/fetch.ts --discover example.com
 ```
