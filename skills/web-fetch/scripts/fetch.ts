@@ -61,21 +61,23 @@ async function fetchMarkdown(url: string) {
     }
   } catch {}
 
-  // Fetch the actual HTML for remaining methods
-  const html = await fetchText(url);
-
-  // 3. Defuddle (via defuddle/node)
+  // 3. Defuddle via bunx (auto-resolves its own deps)
   try {
-    const { Defuddle } = await import("defuddle/node");
-    const result = await Defuddle(html, url, { markdown: true });
-    if (result?.content?.trim()) {
-      console.log(result.content);
+    const proc = Bun.spawn(["bunx", "defuddle", "parse", url, "--markdown"], {
+      stdout: "pipe",
+      stderr: "ignore",
+    });
+    const output = await new Response(proc.stdout).text();
+    const code = await proc.exited;
+    if (code === 0 && output.trim()) {
+      console.log(output);
       return;
     }
   } catch {}
 
   // 4. Pandoc (if available)
   try {
+    const html = await fetchText(url);
     const proc = Bun.spawn(["pandoc", "-f", "html", "-t", "markdown"], {
       stdin: new Blob([html]),
       stdout: "pipe",
@@ -90,6 +92,7 @@ async function fetchMarkdown(url: string) {
   } catch {}
 
   // 5. Raw HTML fallback
+  const html = await fetchText(url);
   console.log(html.substring(0, MAX_RAW_CHARS));
 }
 
